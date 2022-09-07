@@ -1,13 +1,13 @@
 import styled from '@emotion/styled';
 
 const ModalBlock = styled.div`
+  position: fixed;
+  inset: 0px;
   max-width: 100%;
   min-width: 100%;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
-  position: relative;
   visibility: 'visible';
-  z-index: 99;
 `;
 
 const Header = styled.div`
@@ -31,4 +31,12 @@ const Content = styled.div`
   transform: translate(50%);
 `;
 
-export { Header, ModalBlock, Content };
+const CloseButton = styled.button`
+  display: flex;
+  border: none;
+  background-color: #f8f9fa;
+  font-size: 1.5rem;
+  color: #868e96;
+  cursor: pointer;
+`;
+export { Header, ModalBlock, Content, CloseButton };

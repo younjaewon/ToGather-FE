@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { useRecoilState } from 'recoil';
+import { modalContext } from '../../contexts/ModalContext';
 import LoginModal from '../Login/LoginModal';
 import { NavigationBlock, Wrapper, LoginButton, CategoryBlock } from './HeaderNavigation.styles';
 
 const HeaderNavigation = () => {
-  const [openModal, setOpenModal] = useState(false);
+  const openModal = useContext(modalContext)?.openModal;
 
-  const handleModalOpen = () => {
-    setOpenModal(true);
+  const handleOpenModal = () => {
+    openModal?.(<LoginModal />);
   };
 
   return (
@@ -20,10 +22,7 @@ const HeaderNavigation = () => {
             <div>메뉴3</div>
             <div>메뉴4</div>
           </CategoryBlock>
-          <LoginButton onClick={handleModalOpen}>
-            로그인
-            {openModal && <LoginModal openModal={openModal} setOpenModal={setOpenModal} />}
-          </LoginButton>
+          <LoginButton onClick={handleOpenModal}>로그인</LoginButton>
         </Wrapper>
       </NavigationBlock>
     </>
