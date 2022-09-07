@@ -25,6 +25,7 @@
     ],
     "ignorePatterns": ["*.css"],
     "rules": {
+        "react/function-component-definition": [{"namedComponents": ["function-declaration", "function-expression", "arrow-function"]}],
         "react/no-unescaped-entities": "off",
         "@typescript-eslint/no-var-requires": "off",
         "import/no-unresolved": "off",
