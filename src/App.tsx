@@ -1,9 +1,9 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { lazy, Suspense, useEffect } from 'react';
+import { BrowserRouter, Router, Route, Routes } from 'react-router-dom';
 
-function App() {
-  // eslint-disable-next-line jsx-a11y/alt-text
-  return <img src="./assets/React-icon.svg" />;
+const App = () =>{
+  return (
+    <>
+    </>
+  )
 }
-
-export default App;
