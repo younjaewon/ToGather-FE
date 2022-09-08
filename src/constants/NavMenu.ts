@@ -1,8 +1,5 @@
-const CATEGORY = [
-  "기술 스택",
-  "좋아요 한 공고",
-  "공고 올리기",
-]
+const Category = [  "공고 검색하기", "Popular Skills"]
 
 
-export default CATEGORY;
+
+export default Category;

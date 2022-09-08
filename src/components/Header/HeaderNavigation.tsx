@@ -1,16 +1,13 @@
-import React, { useContext, useState } from 'react';
-import { useRecoilState } from 'recoil';
+import React, { Children, createContext, useContext, useState } from 'react';
 import { modalContext } from '../../contexts/ModalContext';
+import NavMenuWidth from 'src/constants/NavMenuWidth';
 import LoginModal from '../Login/LoginModal';
-import RegisterModal from '../Login/RegisterModal';
-import {
-  NavigationBlock,
-  Wrapper,
-  LoginButton,
-  RegisterButton,
-  CategoryBlock,
-  ButtonBlock,
-} from './HeaderNavigation.styles';
+import { NavigationBlock, Wrapper, LoginButton, CategoryBlock, NavMenu, Favorites, MenuBtn, GpsContainer } from './HeaderNavigation.styles';
+import SearchMenu from './searchMenu/SearchMenu' ;
+import Statistics from './statisticsMenu/Statistics';
+import { GpsIcon } from "../@icons";
+
+
 
 const HeaderNavigation = () => {
   const openModal = useContext(modalContext)?.openModal;
@@ -18,9 +15,13 @@ const HeaderNavigation = () => {
   const handleOpenModal = () => {
     openModal?.(<LoginModal />);
   };
-  const handleOpenModal2 = () => {
-    openModal?.(<RegisterModal />);
-  };
+
+
+
+  const [searchIsOpen, setSearchIsOpen] = useState(false)
+  const [favoriteIsOpen, setFavoriteIsOpen] = useState(false)
+  const [statisticsIsOpen, setStatisticsIsOpen] = useState(false)
+  const [gpsIsOpen, setGpsIsOpen] = useState(false)
 
   return (
     <>
@@ -28,15 +29,57 @@ const HeaderNavigation = () => {
         <Wrapper>
           <div>로고</div>
           <CategoryBlock>
-            <div>메뉴1</div>
-            <div>메뉴2</div>
-            <div>메뉴3</div>
-            <div>메뉴4</div>
+            <NavMenu
+              widthProp={NavMenuWidth.search}
+              onMouseEnter ={() => {
+                setSearchIsOpen(true)
+              }}
+              onMouseLeave={() => setSearchIsOpen(false)}>
+              <MenuBtn onClick={() => setSearchIsOpen(true)}
+            >
+                공고 검색
+              </MenuBtn>
+                <SearchMenu searchIsOpen={searchIsOpen}/> 
+            </NavMenu>
+            <NavMenu
+              widthProp={NavMenuWidth.favorite}
+              onMouseEnter ={() => {
+                setFavoriteIsOpen(true)
+              }}
+              onMouseLeave={() => setFavoriteIsOpen(false)}>
+              <MenuBtn onClick={() => setFavoriteIsOpen(true)}
+            >
+                좋아요 한 공고
+              </MenuBtn>
+              <Favorites favoriteIsOpen = {favoriteIsOpen}>
+                
+              </Favorites>
+            </NavMenu>
+            <NavMenu
+              widthProp={NavMenuWidth.statistics}
+              onMouseEnter ={() => {
+                setStatisticsIsOpen(true)
+              }}
+              onMouseLeave={() => setStatisticsIsOpen(false)}>
+              <MenuBtn onClick={() => setStatisticsIsOpen(true)}
+            >
+                통계 자료
+              </MenuBtn>
+                <Statistics statisticsIsOpen = {statisticsIsOpen}/>
+            </NavMenu>
+            <GpsContainer
+              widthProp={NavMenuWidth.gps}
+              onMouseEnter ={() => {
+                setGpsIsOpen(true)
+              }}
+              onMouseLeave={() => setGpsIsOpen(false)}
+              onClick={() => setGpsIsOpen(true)}
+            >
+              <GpsIcon />
+
+            </GpsContainer>
           </CategoryBlock>
-          <ButtonBlock>
-            <LoginButton onClick={handleOpenModal}>로그인</LoginButton>
-            <RegisterButton onClick={handleOpenModal2}>회원가입</RegisterButton>
-          </ButtonBlock>
+          <LoginButton onClick={handleOpenModal}>로그인</LoginButton>
         </Wrapper>
       </NavigationBlock>
     </>

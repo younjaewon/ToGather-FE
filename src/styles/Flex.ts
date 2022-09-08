@@ -11,7 +11,7 @@ const Flex = ({
   display: flex;
   flex-direction: ${flexDirection ?? 'row'};
   justify-content: ${justifyContent ?? 'flex-start'};
-  flex-flow: ${flexWrap ?? 'nowrap'};
+  flex-wrap: ${flexWrap ?? 'nowrap'};
   align-items: ${alignItems ?? 'stretch'};
   row-gap: ${rowGap};
   column-gap: ${columnGap};
