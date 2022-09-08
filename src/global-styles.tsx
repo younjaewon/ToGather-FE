@@ -1,5 +1,6 @@
 
 import { css, Global } from '@emotion/react';
+import React from 'react';
 import Reset from './styles/Reset';
 
 
@@ -13,7 +14,6 @@ const sizes: { [key: string]: number; } = {
 
 
 const GlobalStyle = () => {
-  console.log(Reset)
   return (
   <Global styles={css`
     ${Reset()}
@@ -30,7 +30,7 @@ const GlobalStyle = () => {
   }
 
   @media screen and (max-width: ${sizes.mobile}) {
-
+    
   }
   media screen and (max-width: ${sizes.tablet}) {
     

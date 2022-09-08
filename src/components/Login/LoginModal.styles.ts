@@ -13,7 +13,6 @@ const Title = styled.h1`
   margin: 2rem 0;
   font-size: 1.5rem;
   font-weight: 600;
-  text-align: center;
   span {
     color: #854141;
   }
@@ -21,11 +20,9 @@ const Title = styled.h1`
 
 const SocialLoginBlock = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  max-width: 30rem;
-  margin: 2rem 0;
-  gap: 50px;
-  justify-content: center;
+  width: 80%;
+  margin-top: 2rem;
+  justify-content: space-between;
   align-items: center;
 `;
 
