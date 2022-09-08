@@ -17,7 +17,20 @@ const Wrapper = styled.div`
   top: 0px;
 `;
 
+const ButtonBlock = styled.div`
+  display: flex;
+  gap: 30px;
+`;
+
 const LoginButton = styled.button`
+  outline: none;
+  border: none;
+  background-color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+`;
+
+const RegisterButton = styled.button`
   outline: none;
   border: none;
   background-color: #fff;
@@ -32,4 +45,4 @@ const CategoryBlock = styled.div`
   gap: 7rem;
 `;
 
-export { Wrapper, NavigationBlock, LoginButton, CategoryBlock };
+export { Wrapper, NavigationBlock, LoginButton, RegisterButton, CategoryBlock, ButtonBlock };
