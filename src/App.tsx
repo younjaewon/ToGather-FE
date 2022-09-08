@@ -12,7 +12,7 @@ const App = () => {
       <ModalProvider>
         <HeaderNavigation />
         <Routes>
-          <Route path="/" element={<Test />} />
+          <Route path="/" element={<HeaderNavigation />} />
           <Route path="/oauth/kakao" element={<KakaoAuthPage />} />
         </Routes>
       </ModalProvider>
