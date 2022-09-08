@@ -34,60 +34,6 @@ const ButtonBlock = styled.div`
   flex-direction: column;
 `;
 
-const GoogleButton = styled.button`
-  display: flex;
-  width: 8rem;
-  height: 8rem;
-  border-radius: 1rem;
-  border: none;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-  background-color: white;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-`;
-
-const GithubButton = styled.button`
-  display: flex;
-  width: 8rem;
-  height: 8rem;
-  border-radius: 1rem;
-  border: none;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-  background-color: #272e33;
-  color: white;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-`;
-
-const KakaoButton = styled.button`
-  display: flex;
-  width: 8rem;
-  height: 8rem;
-  border-radius: 1rem;
-  border: none;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-  background-color: #fae100;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-`;
-
-const NaverButton = styled.button`
-  display: flex;
-  width: 8rem;
-  height: 8rem;
-  border-radius: 1rem;
-  border: none;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-  background-color: #00c63b;
-  color: #00c63b;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-`;
-
 const ButtonTitle = styled.p`
   margin-top: 1rem;
   font-weight: 600;
@@ -96,14 +42,4 @@ const ButtonTitle = styled.p`
   color: #565656;
   letter-spacing: -0.8px;
 `;
-export {
-  Wrapper,
-  SocialLoginBlock,
-  Title,
-  ButtonBlock,
-  GoogleButton,
-  GithubButton,
-  KakaoButton,
-  NaverButton,
-  ButtonTitle,
-};
+export { Wrapper, SocialLoginBlock, Title, ButtonBlock, ButtonTitle };

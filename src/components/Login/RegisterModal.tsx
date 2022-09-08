@@ -49,7 +49,6 @@ const RegisterModal = () => {
       }
     }
   };
-  console.log(formData);
   return (
     <Wrapper>
       <Title>회원가입</Title>
