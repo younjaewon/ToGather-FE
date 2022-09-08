@@ -21,7 +21,7 @@ const Header = styled.div`
 
 const Content = styled.div`
   max-width: 100%;
-  min-width: 60%;
+  min-width: 40%;
   min-height: 40vh;
   border-radius: 1rem;
   top: 20%;

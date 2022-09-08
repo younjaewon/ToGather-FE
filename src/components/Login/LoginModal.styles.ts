@@ -20,9 +20,11 @@ const Title = styled.h1`
 
 const SocialLoginBlock = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
   width: 80%;
   margin-top: 2rem;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 `;
 

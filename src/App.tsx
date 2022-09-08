@@ -12,7 +12,6 @@ const App = () => {
       <ModalProvider>
         <HeaderNavigation />
         <Routes>
-          <Route path="/" element={<HeaderNavigation />} />
           <Route path="/oauth/kakao" element={<KakaoAuthPage />} />
         </Routes>
       </ModalProvider>
@@ -20,6 +19,4 @@ const App = () => {
   );
 };
 
-
 export default App;
-
