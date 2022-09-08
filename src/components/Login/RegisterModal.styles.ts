@@ -12,12 +12,17 @@ const Title = styled.h2`
 
 const InputBoxBlock = styled.div`
   display: flex;
+  width: 100%;
   justify-content: space-around;
-  margin-bottom: 1rem;
-  height: 35px;
+  margin-bottom: 2rem;
+  height: 40px;
   font-size: 1rem;
   font-weight: 600;
   align-items: center;
+
+  .customSelect {
+    width: 60%;
+  }
 `;
 
 const InputLabel = styled.label`
@@ -26,6 +31,7 @@ const InputLabel = styled.label`
 `;
 
 const InputText = styled.input`
+  width: 60%;
   height: 100%;
   border-radius: 5px;
   border: 1px solid gray;
