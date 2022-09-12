@@ -2,7 +2,7 @@ import React from 'react';
 import Select from 'react-select';
 import CreatableSelect from 'react-select/creatable';
 import { useRecoilState } from 'recoil';
-import { registerForm } from '../../contexts/RegisterAtom';
+import { registerAtom } from '../../contexts/RegisterAtom';
 import { InputBoxBlock, Title, InputLabel, InputText, Wrapper } from './RegisterModal.styles';
 
 const position = [
@@ -26,7 +26,7 @@ const stackSkill = [
 ];
 
 const RegisterModal = () => {
-  const [formData, setFormData] = useRecoilState(registerForm);
+  const [formData, setFormData] = useRecoilState(registerAtom);
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
