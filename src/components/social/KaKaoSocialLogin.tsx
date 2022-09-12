@@ -8,11 +8,7 @@ const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${
 
 const KaKaoSocialLogin = () => {
   const getAuthToken = () => {
-    console.log(KAKAO_AUTH_URL);
-    location.href = `https://kauth.kakao.com/oauth/authorize?client_id=${
-      import.meta.env.VITE_KAKAO_KEY
-    }&redirect_uri=${import.meta.env.VITE_OAUTH_REDIRECT_URL}&response_type=code
-`;
+    location.href = KAKAO_AUTH_URL;
   };
   return (
     <KakaoLoginButton onClick={getAuthToken}>
