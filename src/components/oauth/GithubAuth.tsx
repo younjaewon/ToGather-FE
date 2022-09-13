@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { authAtom } from 'src/contexts/AuthAtom';
 
-const KakaoAuth = () => {
+const GithubAuth = () => {
   const [authToken, setAuthToken] = useRecoilState(authAtom);
   const navigation = useNavigate();
 
@@ -13,12 +13,11 @@ const KakaoAuth = () => {
     if (param) {
       // 백엔드에 authToken 전송
       // 백엔드 api 와 통신 후 authToken이 아닌  refresh와 access 토큰 넣기 atom initial 값 구조 변경
-      setAuthToken({ ...authToken, kakao: param });
+      setAuthToken({ ...authToken, github: param });
     }
     navigation('/');
   }, [param]);
-
   return <div>로딩중입니다.</div>;
 };
 
-export default KakaoAuth;
+export default GithubAuth;

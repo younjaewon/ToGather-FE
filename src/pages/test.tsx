@@ -8,7 +8,7 @@ const Test = () => {
   useEffect(() => {
     console.log(authToken);
   }, []);
-  return <div>1231231231231231</div>;
+  return <div>메인입니다.</div>;
 };
 
 export default Test;
