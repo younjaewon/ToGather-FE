@@ -3,6 +3,7 @@ import { modalContext } from '../../contexts/ModalContext';
 import NavMenuWidth from 'src/constants/NavMenuWidth';
 import LoginModal from '../Login/LoginModal';
 import {
+  NavigationContainer,
   NavigationBlock,
   Wrapper,
   LoginButton,
@@ -13,7 +14,6 @@ import {
   GpsContainer,
 } from './HeaderNavigation.styles';
 import SearchMenu from './searchMenu/SearchMenu';
-import Statistics from './statisticsMenu/Statistics';
 import { GpsIcon } from '../@icons';
 
 const HeaderNavigation = () => {
@@ -30,6 +30,7 @@ const HeaderNavigation = () => {
 
   return (
     <>
+    <NavigationContainer>
       <NavigationBlock>
         <Wrapper>
           <div>로고</div>
@@ -54,16 +55,6 @@ const HeaderNavigation = () => {
               <MenuBtn onClick={() => setFavoriteIsOpen(true)}>좋아요 한 공고</MenuBtn>
               <Favorites favoriteIsOpen={favoriteIsOpen}></Favorites>
             </NavMenu>
-            <NavMenu
-              widthProp={NavMenuWidth.statistics}
-              onMouseEnter={() => {
-                setStatisticsIsOpen(true);
-              }}
-              onMouseLeave={() => setStatisticsIsOpen(false)}
-            >
-              <MenuBtn onClick={() => setStatisticsIsOpen(true)}>통계 자료</MenuBtn>
-              <Statistics statisticsIsOpen={statisticsIsOpen} />
-            </NavMenu>
             <GpsContainer
               widthProp={NavMenuWidth.gps}
               onMouseEnter={() => {
@@ -78,6 +69,7 @@ const HeaderNavigation = () => {
           <LoginButton onClick={handleOpenModal}>로그인</LoginButton>
         </Wrapper>
       </NavigationBlock>
+    </NavigationContainer>
     </>
   );
 };
