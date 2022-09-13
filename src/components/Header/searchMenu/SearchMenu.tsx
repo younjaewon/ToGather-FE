@@ -1,24 +1,31 @@
-import { SearchContainer, SkillsContainer, SkillBtn, skillIconTheme } from './SearchMenu.style';
+import { SearchContainer, SkillsContainer, SkillBtn } from './SearchMenu.style';
 import { Skills } from '../../@icons/index';
-import { useRecoilState, atom, useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
+import { filterOptionAtom } from '../../../contexts/SeacrchSkillsAtom';
+import { useState } from 'react';
+import { useRecoilValue } from 'recoil';
 
 interface SearchMenuProps {
   searchIsOpen: boolean;
 }
 
-const skillsInitial = atom({
-  key: 'selectedSkills',
-  default: {},
-});
 
 const SearchMenu = ({ searchIsOpen }: SearchMenuProps) => {
-  const [skills, setSkills] = useRecoilState(skillsInitial);
+  const [filtered, setFilteredOption] = useRecoilState(filterOptionAtom);
+
+
+  const updateSelectedSkill = (skill:string) => {
+    setFilteredOption({...filtered, skills:[...filtered.skills, skill]})
+  }
 
   return (
     <SearchContainer searchIsOpen={searchIsOpen}>
       <SkillsContainer>
         {Skills.map(({ skill, icon }) => (
-          <SkillBtn key={skill} onClick={() => setSkills({ ...skills, skill })}>
+          <SkillBtn 
+            key={skill} 
+            onClick={() => {updateSelectedSkill(skill)}}
+          >
             {icon()}
           </SkillBtn>
         ))}

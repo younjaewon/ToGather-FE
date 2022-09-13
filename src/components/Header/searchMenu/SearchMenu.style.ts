@@ -1,12 +1,7 @@
 import styled from '@emotion/styled';
 import Flex from '../../../styles/Flex';
 import COLOR from '../../../constants/colors';
-import SkillsIconSize from '../../../constants/SkillsIconSize';
-
-const skillIconTheme = {
-  width: '14px',
-  height: '14px',
-};
+import FontSizes from '../../../constants/FontSizes';
 
 interface searchAreaProps {
   searchIsOpen: boolean;
@@ -14,32 +9,35 @@ interface searchAreaProps {
 
 const SearchContainer = styled.div`
   display: ${({ searchIsOpen }: searchAreaProps) => (searchIsOpen ? 'block' : 'none')};
-  width: 50%;
-  height: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1180px;
+  height: 300px;
   position: fixed;
-  margin: 0 auto;
   top: 4rem;
-  z-index: 9999;
   cursor: default;
   box-shadow: 0px 4px 5px ${COLOR.GRAY_100};
   padding: 1rem;
+  z-index: 9999;
+  background-color:${COLOR.WHITE};
 `;
 
 const SkillsContainer = styled.div`
   ${Flex({ columnGap: '2rem', flexWrap: 'wrap', rowGap: '1rem' })}
+  z-index: 9999;
 `;
 
 const SkillBtn = styled.button`
-  width: 8rem;
+  width: 6rem;
   border-radius: 100px;
   gap: 10px;
-  padding: 12px 20px 12px 15px;
+  padding: 8px 12px 8px 14px;
   ${Flex({ alignItems: 'center' })}
   border: 1px solid ${COLOR.GRAY_100};
   background-color: white;
   svg {
-    width: ${SkillsIconSize.width};
-    height: ${SkillsIconSize.height};
+    width: ${FontSizes.Skills_Icon_Width};
+    height: ${FontSizes.Skills_Icon_Height};
   }
   transition: 0.2s;
 
@@ -48,4 +46,4 @@ const SkillBtn = styled.button`
   }
 `;
 
-export { SearchContainer, SkillsContainer, SkillBtn, skillIconTheme };
+export { SearchContainer, SkillsContainer, SkillBtn };

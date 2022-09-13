@@ -4,4 +4,5 @@ const SkillsTable = {
   typescript: 3,
 }
 
+
 export default SkillsTable;
