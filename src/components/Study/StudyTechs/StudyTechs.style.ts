@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import Flex from 'src/styles/Flex';
 import COLOR from '../../../constants/colors'
 import FontSizes from 'src/constants/FontSizes';
-import { Skills } from 'src/components/@icons';
+import { techs } from 'src/components/@icons';
 
-const StudySkillsBlock = styled.div`
+const StudytechsBlock = styled.div`
   ${Flex({rowGap:'1rem', alignItems: 'center', justifyContent: 'center', flexWrap:'nowrap'})};
   width: 200px;
   height:4rem;
@@ -16,7 +16,7 @@ const StudySkillsBlock = styled.div`
   margin: 0 auto 5%;
 `
 
-const SkillIconContainer = styled.div`
+const TechIconContainer = styled.div`
 `
 
-export {StudySkillsBlock, SkillIconContainer}
+export {StudytechsBlock, TechIconContainer}
