@@ -31,6 +31,7 @@ const SearchMenu = ({ searchIsOpen }: SearchMenuProps) => {
       <TechsContainer>
         {techs.map(({ tech, icon }) => (
           <TechBtn 
+            className="tech__Btn"
             key={tech} 
             onClick={() => {
               handleTechBtn(tech);
