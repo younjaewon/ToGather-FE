@@ -6,10 +6,8 @@ import GlobalStyle from './global-styles';
 
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-    <RecoilRoot>
-      <GlobalStyle />
-      <App />
-    </RecoilRoot>
-  </React.StrictMode>
+  <RecoilRoot>
+    <GlobalStyle />
+    <App />
+  </RecoilRoot>
 );
