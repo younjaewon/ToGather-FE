@@ -1,4 +1,4 @@
-const Category = [  "공고 검색하기", "Popular Skills"]
+const Category = [  "공고 검색하기", "Popular techs"]
 
 
 

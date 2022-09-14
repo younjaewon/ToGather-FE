@@ -11,7 +11,7 @@ const position = [
   { value: 'webbDesiner', label: '웹디자이너' },
 ];
 
-const stackSkill = [
+const stacktech = [
   { value: 'React', label: 'React' },
   { value: 'JavaScript', label: 'JavaScript' },
   { value: 'TypeScript', label: 'TypeScript' },
@@ -86,15 +86,15 @@ const RegisterModal = () => {
           />
         </InputBoxBlock>
         <InputBoxBlock>
-          <InputLabel htmlFor="skill">기술 태그</InputLabel>
+          <InputLabel htmlFor="tech">기술 태그</InputLabel>
           <CreatableSelect
             isClearable
             isMulti
-            id="skill"
+            id="tech"
             className="customSelect"
-            name="skill"
+            name="tech"
             placeholder="기술 태그"
-            options={stackSkill}
+            options={stacktech}
             onChange={handleSelectClear}
           />
         </InputBoxBlock>

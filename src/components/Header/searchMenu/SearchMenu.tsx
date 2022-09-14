@@ -1,28 +1,49 @@
-import { SearchContainer, SkillsContainer, SkillBtn, skillIconTheme } from './SearchMenu.style';
-import { Skills } from '../../@icons/index';
-import { useRecoilState, atom, useRecoilValue } from 'recoil';
+import { SearchContainer, TechsContainer, TechBtn } from './SearchMenu.style';
+import { techs } from '../../@icons/index';
+import { useRecoilState } from 'recoil';
+import { searchTechsAtom } from '../../../contexts/SeacrchTechsAtom';
 
 interface SearchMenuProps {
   searchIsOpen: boolean;
 }
 
-const skillsInitial = atom({
-  key: 'selectedSkills',
-  default: {},
-});
+interface BtnStateType {
+  [key:string]: boolean;
+}
 
 const SearchMenu = ({ searchIsOpen }: SearchMenuProps) => {
-  const [skills, setSkills] = useRecoilState(skillsInitial);
+
+  const [filteredTech, setFilterTech] = useRecoilState(searchTechsAtom);
+  
+  const handleTechBtn = ( tech: string ) => {
+    const copied = {...filteredTech};
+    delete copied[tech];
+    
+    const isPresentTech = filteredTech[tech]; 
+
+    if(isPresentTech){
+      setFilterTech(copied)
+    }else setFilterTech({...filteredTech, [tech]: true})
+  }
 
   return (
-    <SearchContainer searchIsOpen={searchIsOpen}>
-      <SkillsContainer>
-        {Skills.map(({ skill, icon }) => (
-          <SkillBtn key={skill} onClick={() => setSkills({ ...skills, skill })}>
+    <SearchContainer isOpen={searchIsOpen}>
+      <TechsContainer>
+        {techs.map(({ tech, icon }) => (
+          <TechBtn 
+            key={tech} 
+            className="tech__Btn"
+            onClick={() => {
+              handleTechBtn(tech);
+              }
+            }
+            isOn = {filteredTech[tech]}
+          >
             {icon()}
-          </SkillBtn>
+            {tech}
+          </TechBtn>
         ))}
-      </SkillsContainer>
+      </TechsContainer>
     </SearchContainer>
   );
 };

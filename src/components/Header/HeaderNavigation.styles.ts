@@ -1,7 +1,6 @@
 import styled, { CSS } from '@emotion/styled';
 import COLOR from '../../constants/colors';
 import Flex from '../../styles/Flex';
-import { GpsIcon } from '../@icons';
 
 interface favoriteProps {
   favoriteIsOpen: boolean;
@@ -11,18 +10,23 @@ interface menuWidthProp {
   widthProp: string;
 }
 
-const NavigationBlock = styled.div`
-  position: relative;
+const NavigationContainer = styled.nav`
+  position: fixed;
   width: 100%;
   height: 4rem;
+  ${Flex({alignItems:'center'})}
+  box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.08);
+  z-index:9999;
   background-color: white;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+`;
+
+const NavigationBlock = styled.div`
+  width: 1180px;
   max-width: 1180px;
   margin: 0 auto;
 `;
 
 const Wrapper = styled.div`
-  position: sticky;
   height: 100%;
   display: flex;
   align-items: center;
@@ -68,10 +72,11 @@ const Favorites = styled.div`
   position: fixed;
   margin: 0 auto;
   top: 4rem;
-  z-index: 9999;
   cursor: default;
   box-shadow: 0px 4px 5px ${COLOR.GRAY_100};
   padding: 1rem;
+  z-index:9999;
+  background-color: ${COLOR.WHITE};
 `;
 
 const FavoriteList = styled.div`
@@ -90,6 +95,7 @@ const GpsContainer = styled.div`
 `;
 
 export {
+  NavigationContainer,
   Wrapper,
   NavigationBlock,
   LoginButton,
