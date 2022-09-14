@@ -32,6 +32,7 @@ const SearchMenu = ({ searchIsOpen }: SearchMenuProps) => {
         {techs.map(({ tech, icon }) => (
           <TechBtn 
             key={tech} 
+            className="tech__Btn"
             onClick={() => {
               handleTechBtn(tech);
               }

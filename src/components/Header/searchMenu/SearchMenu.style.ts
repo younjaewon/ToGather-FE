@@ -47,7 +47,7 @@ const TechBtn = styled.button`
   transition: 0.2s;
   transform: ${({ isOn }: isOn) => ( isOn ? 'scale(1.2)' : '') };
 
-  :hover {
+  tech__Btn:hover {
     transform: translate3d(-2px, -2px, -100px);
   }
 `;
