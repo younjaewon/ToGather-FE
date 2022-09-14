@@ -1,7 +1,5 @@
 import styled from '@emotion/styled';
-import { Link } from 'react-router-dom';
 import Flex from 'src/styles/Flex';
-import COLOR from '../../constants/colors'
 
 
 

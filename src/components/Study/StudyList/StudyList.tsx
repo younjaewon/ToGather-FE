@@ -1,24 +1,23 @@
 import { Study, StudyDeadline, StudyTitle, StudyFooter, StudyAuthor, StudyViewer} from './StudyList.style';
-import StudySkills from '../StudySkills/StudySkills'
 import { StudyListTest } from '../../../mocks/StudyListTest';
 import { Link } from 'react-router-dom';
-import { Skills } from '../../@icons/Skills/Skills';
+import { techs } from '../../@icons/techs/techs';
 import Slider from "react-slick";
-import { filteredSkillsToNumber } from '../../../contexts/SeacrchSkillsAtom';
 import { useRecoilValue } from 'recoil';
-
-import { filterOptionAtom } from '../../../contexts/SeacrchSkillsAtom';
+import Studytechs from '../StudyTechs/StudyTechs';
+import { filteredStudy } from '../../../contexts/SeacrchTechsAtom';
 
 const StudyList = () => {
 
-  const filteredSkillsArray = useRecoilValue(filteredSkillsToNumber)
-
+  const studyList = useRecoilValue(filteredStudy)
+  console.log(studyList);
+  
 
   return (
     <>
-      {StudyListTest.map(list => (
+      {studyList.map(list => (
         <Study key={list.id} to='/'>
-          <StudySkills skillsList={list.techs} />
+          <Studytechs techsList={list.techs} />
             <StudyDeadline>
               마감 예정일
               <span aria-hidden='true'>

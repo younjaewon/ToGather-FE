@@ -5,7 +5,7 @@ interface StudyListInterface {
     author: string,
   },
   status: 'Recruiting' | 'in progress' | 'finish',
-  techs: Number[],
+  techs: String[],
   location: string,
   deadline:string
 }
@@ -18,7 +18,7 @@ const StudyListTest:StudyListInterface[] = [
       author: 'testAuthor',
     },
     status: 'Recruiting',
-    techs: [1,2,12,15,16],
+    techs: ['react', 'javascript', 'typescript', 'jest', 'java', 'spring'],
     location: '서울',
     deadline: '22-09-13'
 
@@ -30,7 +30,7 @@ const StudyListTest:StudyListInterface[] = [
       author: 'testAuthor',
     },
     status: 'in progress',
-    techs: [1,2,3],
+    techs: ['react', 'javascript', 'typescript', 'jest'],
     location: '경기도',
     deadline: '22-09-13'
   },
@@ -41,7 +41,7 @@ const StudyListTest:StudyListInterface[] = [
       author: 'testAuthor',
     },
     status: 'finish',
-    techs: [1],
+    techs: ['react', 'javascript', 'typescript', 'jest', 'java', 'spring'],
     location: '대구',
     deadline: '22-09-13'
   },
@@ -52,7 +52,7 @@ const StudyListTest:StudyListInterface[] = [
       author: 'testAuthor',
     },
     status: 'Recruiting',
-    techs: [1,2,3],
+    techs: ['react', 'javascript', 'typescript', 'jest', 'java', 'spring'],
     location: '부산',
     deadline: '22-09-13'
   },
@@ -63,7 +63,7 @@ const StudyListTest:StudyListInterface[] = [
       author: 'testAuthor',
     },
     status: 'Recruiting',
-    techs: [2],
+    techs: ['react', 'javascript', 'typescript', 'jest', 'java', 'spring'],
     location: '서울',
     deadline: '22-09-13'
   },
@@ -74,7 +74,7 @@ const StudyListTest:StudyListInterface[] = [
       author: 'testAuthor',
     },
     status: 'Recruiting',
-    techs: [2],
+    techs: ['react', 'javascript', 'typescript', 'jest', 'java', 'spring'],
     location: '서울',
     deadline: '22-09-13'
   },
@@ -85,7 +85,7 @@ const StudyListTest:StudyListInterface[] = [
       author: 'testAuthor',
     },
     status: 'Recruiting',
-    techs: [2],
+    techs: ['react', 'javascript', 'typescript', 'jest', 'java', 'spring'],
     location: '서울',
     deadline: '22-09-13'
   },
@@ -96,7 +96,7 @@ const StudyListTest:StudyListInterface[] = [
       author: 'testAuthor',
     },
     status: 'Recruiting',
-    techs: [2],
+    techs: ['react', 'javascript', 'typescript', 'jest', 'java', 'spring'],
     location: '서울',
     deadline: '22-09-13'
   },
@@ -107,7 +107,7 @@ const StudyListTest:StudyListInterface[] = [
       author: 'testAuthor',
     },
     status: 'Recruiting',
-    techs: [2],
+    techs: ['react', 'javascript', 'typescript', 'jest', 'java', 'spring'],
     location: '서울',
     deadline: '22-09-13'
   },
@@ -118,7 +118,7 @@ const StudyListTest:StudyListInterface[] = [
       author: 'testAuthor',
     },
     status: 'Recruiting',
-    techs: [2],
+    techs: ['react', 'javascript', 'typescript', 'jest', 'java', 'spring'],
     location: '서울',
     deadline: '22-09-13'
   },
@@ -129,7 +129,7 @@ const StudyListTest:StudyListInterface[] = [
       author: 'testAuthor',
     },
     status: 'Recruiting',
-    techs: [2],
+    techs: ['react', 'javascript', 'typescript', 'jest', 'java', 'spring'],
     location: '서울',
     deadline: '22-09-13'
   },
@@ -140,7 +140,7 @@ const StudyListTest:StudyListInterface[] = [
       author: 'testAuthor',
     },
     status: 'Recruiting',
-    techs: [2],
+    techs: ['react', 'javascript', 'typescript', 'jest', 'java', 'spring'],
     location: '서울',
     deadline: '22-09-13'
   },
