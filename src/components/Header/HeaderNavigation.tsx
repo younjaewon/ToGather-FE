@@ -15,10 +15,10 @@ import {
   UserBlock,
   MyPageMenu,
 } from './HeaderNavigation.styles';
-import SearchMenu from './searchMenu/SearchMenu';
 import { GpsIcon } from '../@icons';
 import MyPageList from '../mypage/MyPageList';
 import { Link } from 'react-router-dom';
+import SearchMenu from './SearchMenu';
 
 const HeaderNavigation = () => {
   const openModal = useContext(modalContext)?.openModal;
