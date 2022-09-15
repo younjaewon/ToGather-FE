@@ -15,6 +15,9 @@ import {
   UserBlock,
   MyPageMenu,
 } from './HeaderNavigation.styles';
+
+import SearchMenu from './SearchMenu';
+
 import { GpsIcon } from '../@icons';
 import MyPageList from '../mypage/MyPageList';
 import { Link } from 'react-router-dom';
@@ -31,6 +34,7 @@ const HeaderNavigation = () => {
   const [favoriteIsOpen, setFavoriteIsOpen] = useState(false);
   const [statisticsIsOpen, setStatisticsIsOpen] = useState(false);
   const [gpsIsOpen, setGpsIsOpen] = useState(false);
+
   const [myPageIsOpen, setMyPageIsOpen] = useState(false);
 
   return (

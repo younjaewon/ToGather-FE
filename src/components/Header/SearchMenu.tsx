@@ -8,6 +8,7 @@ interface SearchMenuProps {
 }
 
 interface BtnStateType {
+
   [key: string]: boolean;
 }
 
@@ -24,6 +25,7 @@ const SearchMenu = ({ searchIsOpen }: SearchMenuProps) => {
       setFilterTech(copied);
     } else setFilterTech({ ...filteredTech, [tech]: true });
   };
+
 
   return (
     <SearchContainer isOpen={searchIsOpen}>
