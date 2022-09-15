@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
-import Flex from '../../../styles/Flex';
-import COLOR from '../../../constants/colors';
-import FontSizes from '../../../constants/FontSizes';
+import Flex from '../../styles/Flex';
+import COLOR from '../../constants/colors';
+import FontSizes from '../../constants/FontSizes';
 import { theme } from '@emotion/react';
 
 interface isOpen {
@@ -11,7 +11,6 @@ interface isOpen {
 interface isOn {
   [key: string]: boolean;
 }
-
 
 const SearchContainer = styled.div`
   display: ${({ isOpen }: isOpen) => (isOpen ? 'block' : 'none')};
@@ -24,7 +23,7 @@ const SearchContainer = styled.div`
   box-shadow: 0px 4px 5px ${COLOR.GRAY_100};
   padding: 1rem;
   z-index: 9999;
-  background-color:${COLOR.WHITE};
+  background-color: ${COLOR.WHITE};
 `;
 
 const TechsContainer = styled.div`
@@ -45,7 +44,7 @@ const TechBtn = styled.button`
     height: ${FontSizes.techs_Icon_Height};
   }
   transition: 0.2s;
-  transform: ${({ isOn }: isOn) => ( isOn ? 'scale(1.2)' : '') };
+  transform: ${({ isOn }: isOn) => (isOn ? 'scale(1.2)' : '')};
 
   tech__Btn:hover {
     transform: translate3d(-2px, -2px, -100px);
