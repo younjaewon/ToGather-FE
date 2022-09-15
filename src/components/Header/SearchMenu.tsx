@@ -19,7 +19,6 @@ const SearchMenu = ({ searchIsOpen }: SearchMenuProps) => {
     delete copied[tech];
 
     const isPresentTech = filteredTech[tech];
-
     if (isPresentTech) {
       setFilterTech(copied);
     } else setFilterTech({ ...filteredTech, [tech]: true });
