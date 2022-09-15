@@ -33,7 +33,8 @@ const UploadTest = () => {
     
     myBucket.putObject(params)
     .send((err) => {
-      if (err) console.log("err" + err)
+      if (err) console.log("error" + err)
+
     })
   }
   

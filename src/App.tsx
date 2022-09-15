@@ -1,7 +1,7 @@
 import React from 'react';
 import { lazy, Suspense, useEffect, useState } from 'react';
 import { BrowserRouter, Router, Route, Routes } from 'react-router-dom';
-import MainPage from './pages/MainPage/MainPage';
+import MainPage from './pages/MainPage';
 import ModalProvider from './contexts/ModalContext';
 import AuthRedirectPage from './pages/AuthRedirectPage';
 import Test from './pages/Test';
