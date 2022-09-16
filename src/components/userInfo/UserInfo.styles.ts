@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import COLOR from 'src/constants/colors';
 
 const UserInfoBlock = styled.div`
   position: relative;
@@ -17,4 +18,8 @@ const Wrapper = styled.div`
   margin: 0 auto;
 `;
 
-export { UserInfoBlock, ButtonBlock, Wrapper };
+const TempBlock = styled.div`
+  width: 60%;
+`;
+
+export { UserInfoBlock, ButtonBlock, Wrapper, TempBlock };

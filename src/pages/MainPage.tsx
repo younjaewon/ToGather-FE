@@ -10,7 +10,6 @@ const MainPage = () => {
   return (
     <>
       <HeaderNavigation />
-      <UploadTest />
       <Statistics />
       <StudyListContainer />
     </>

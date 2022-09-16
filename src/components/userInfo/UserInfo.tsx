@@ -2,16 +2,16 @@ import React from 'react';
 import Select from 'react-select';
 import CreatableSelect from 'react-select/creatable';
 import { position, stacktech } from 'src/mocks/SelectTechs';
+import { CancelButton, SubmitButton } from 'src/styles/Button';
 import {
   ProfileImageBlock,
   InputBoxBlock,
   InputLabel,
   InputText,
   ProfileArticle,
-  SubmitButton,
 } from 'src/styles/Input';
 import Breadcrumb from '../breadCrumb/Breadcrumb';
-import { UserInfoBlock, ButtonBlock, Wrapper } from './UserInfo.styles';
+import { UserInfoBlock, ButtonBlock, Wrapper, TempBlock } from './UserInfo.styles';
 
 const UserInfo = () => {
   return (
@@ -61,10 +61,11 @@ const UserInfo = () => {
           </InputBoxBlock>
           <InputBoxBlock>
             <InputLabel htmlFor="temp">온도</InputLabel>
-            <InputText id="temp" name="temp" type="text" readOnly />
+            <TempBlock>23</TempBlock>
           </InputBoxBlock>
           <ButtonBlock>
-            <SubmitButton type="submit">수정</SubmitButton>
+            <SubmitButton>수정</SubmitButton>
+            <CancelButton>취소</CancelButton>
           </ButtonBlock>
         </form>
       </Wrapper>
