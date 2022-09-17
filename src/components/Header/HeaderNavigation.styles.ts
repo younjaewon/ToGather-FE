@@ -1,4 +1,4 @@
-import styled, { CSS } from '@emotion/styled';
+import styled from '@emotion/styled';
 import COLOR from '../../constants/colors';
 import Flex from '../../styles/Flex';
 
@@ -56,12 +56,6 @@ const CategoryBlock = styled.div`
 const NavMenu = styled.div`
   ${Flex({ alignItems: 'center', justifyContent: 'center' })};
   width: ${({ widthProp }: menuWidthProp) => widthProp};
-`;
-
-const MyPageMenu = styled.div`
-  flex: 1;
-  width: 100%;
-  ${Flex({ alignItems: 'center', justifyContent: 'center' })};
 `;
 
 const MenuBtn = styled.div`

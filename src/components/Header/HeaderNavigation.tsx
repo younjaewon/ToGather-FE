@@ -1,4 +1,4 @@
-import React, { Children, createContext, useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { modalContext } from '../../contexts/ModalContext';
 import NavMenuWidth from 'src/constants/NavMenuWidth';
 import LoginModal from '../Login/LoginModal';
@@ -17,6 +17,8 @@ import {
 } from './HeaderNavigation.styles';
 
 import { GpsIcon } from '../@icons';
+import { useRecoilValue } from 'recoil';
+import { isScrollOverAtom } from '../../contexts/isScrollOverAtom';
 import MyPageList from '../mypage/MyPageList';
 import { Link } from 'react-router-dom';
 import SearchMenu from './SearchMenu';
@@ -35,7 +37,6 @@ const HeaderNavigation = () => {
 
   const [searchIsOpen, setSearchIsOpen] = useState(false);
   const [favoriteIsOpen, setFavoriteIsOpen] = useState(false);
-  const [statisticsIsOpen, setStatisticsIsOpen] = useState(false);
   const [gpsIsOpen, setGpsIsOpen] = useState(false);
 
   const [myPageIsOpen, setMyPageIsOpen] = useState(false);
@@ -45,8 +46,10 @@ const HeaderNavigation = () => {
       <NavigationContainer>
         <NavigationBlock>
           <Wrapper>
+
             <Link to="/">로고</Link>
             <CategoryBlock>
+
               <NavMenu
                 widthProp={NavMenuWidth.search}
                 onMouseEnter={() => {
@@ -78,6 +81,7 @@ const HeaderNavigation = () => {
                 <GpsIcon />
               </GpsContainer>
             </CategoryBlock>
+            
             <UserBlock>
               <MyPageMenu
                 widthProp={NavMenuWidth.myPage}

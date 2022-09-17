@@ -2,10 +2,29 @@ import { SearchContainer, TechsContainer, TechBtn } from './SearchMenu.style';
 import { techs } from '../@icons/index';
 import { useRecoilState } from 'recoil';
 import { searchTechsAtom } from '../../contexts/SeacrchTechsAtom';
+import { useEffect, useState } from 'react';
+import useCheckIsScrollOver from '../../hooks/useCheckIsScrollOver';
+
 
 interface SearchMenuProps {
   searchIsOpen: boolean;
 }
+
+
+const SearchMenu = ({ searchIsOpen }: SearchMenuProps) => {
+  const [isScrollOver, setIsScrollOver] = useState(false);
+
+  const handleScroll = () => {
+    useCheckIsScrollOver(setIsScrollOver, 15);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  });
+
 
 interface BtnStateType {
 
@@ -13,6 +32,7 @@ interface BtnStateType {
 }
 
 const SearchMenu = ({ searchIsOpen }: SearchMenuProps) => {
+
   const [filteredTech, setFilterTech] = useRecoilState(searchTechsAtom);
 
   const handleTechBtn = (tech: string) => {
@@ -28,7 +48,7 @@ const SearchMenu = ({ searchIsOpen }: SearchMenuProps) => {
 
 
   return (
-    <SearchContainer isOpen={searchIsOpen}>
+    <SearchContainer isOpen={searchIsOpen} isScrollOver={isScrollOver}>
       <TechsContainer>
         {techs.map(({ tech, icon }) => (
           <TechBtn
