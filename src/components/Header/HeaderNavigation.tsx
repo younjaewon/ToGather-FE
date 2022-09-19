@@ -107,6 +107,7 @@ const HeaderNavigation = () => {
                   <GpsIcon />
                 </GpsContainer>
               </CategoryBlock>
+
               <UserBlock>
                 <MyPageMenu
                   widthProp={NavMenuWidth.myPage}
