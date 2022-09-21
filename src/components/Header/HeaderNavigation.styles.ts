@@ -1,6 +1,7 @@
-import styled, { CSS } from '@emotion/styled';
+import styled from '@emotion/styled';
 import COLOR from '../../constants/colors';
 import Flex from '../../styles/Flex';
+import { Link } from 'react-router-dom';
 
 interface favoriteProps {
   favoriteIsOpen: boolean;
@@ -48,9 +49,12 @@ const CategoryBlock = styled.div`
   display: flex;
   justify-content: center;
   gap: 2rem;
-  position: absolute;
-  left: 50%;
   height: 100%;
+`;
+
+const WrapRightNav = styled.div`
+  ${Flex({ justifyContent: 'space-between', columnGap: '2rem' })}
+  height:100%;
 `;
 
 const NavMenu = styled.div`
@@ -66,15 +70,15 @@ const MyPageMenu = styled.div`
 
 const MenuBtn = styled.div`
   font-weight: 700;
+  width: 100%;
   height: 50%;
-  ${Flex({ alignItems: 'center' })}
+  ${Flex({ alignItems: 'center', justifyContent: 'center' })}
   border-radius:15%;
   cursor: pointer;
 `;
 
 const Favorites = styled.div`
   display: ${({ favoriteIsOpen }: favoriteProps) => (favoriteIsOpen ? 'flex' : 'none')};
-  flex-direction: column;
   width: 10%;
   height: 200px;
   position: fixed;
@@ -95,7 +99,7 @@ const FavoriteList = styled.div`
 const GpsContainer = styled.div`
   ${Flex({ alignItems: 'center', justifyContent: 'center' })};
   width: ${({ widthProp }: menuWidthProp) => widthProp};
-  margin-left: 1rem;
+
   svg {
     width: 20px;
     height: 20px;
@@ -106,6 +110,14 @@ const UserBlock = styled.div`
   display: flex;
   height: 100%;
   gap: 2rem;
+`;
+
+const SearchByText = styled.div``;
+
+const UploadStudyLink = styled(Link)`
+  ${Flex({ alignItems: 'center', justifyContent: 'center' })};
+  width: ${({ widthProp }: menuWidthProp) => widthProp};
+  font-weight: 700;
 `;
 
 export {
@@ -121,4 +133,7 @@ export {
   GpsContainer,
   UserBlock,
   MyPageMenu,
+  WrapRightNav,
+  SearchByText,
+  UploadStudyLink,
 };
