@@ -11,6 +11,6 @@
 <pattern id="sixth" patternContentUnits="objectBoundingBox" width="1" height="1">
 <use xlink:href="#image0_1551_4389" transform="translate(-0.00277783) scale(0.00558642)"/>
 </pattern>
-<image id="image0_1551_4389" width="180" height="180" xlink:href="images/javascript.png" />
+<image id="image0_1551_4389" width="180" height="180" xlink:href="src/assets/images/javascript.png" />
 </defs>
 </svg>

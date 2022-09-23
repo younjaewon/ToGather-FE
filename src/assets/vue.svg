@@ -10,6 +10,6 @@
 <pattern id="14" patternContentUnits="objectBoundingBox" width="1" height="1">
 <use xlink:href="#image0_793_3445" transform="scale(0.00555556)"/>
 </pattern>
-<image id="image0_793_3445" width="180" height="181" xlink:href="images/vue.png"/>
+<image id="image0_793_3445" width="180" height="181" xlink:href="src/assets/images/vue.png"/>
 </defs>
 </svg>

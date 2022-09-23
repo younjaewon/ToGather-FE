@@ -10,6 +10,6 @@
 <pattern id="eighth" patternContentUnits="objectBoundingBox" width="1" height="1">
 <use xlink:href="#image0_793_3469" transform="scale(0.00555556)"/>
 </pattern>
-<image id="image0_793_3469" width="180" height="180" xlink:href="images/nodejs.png" />
+<image id="image0_793_3469" width="180" height="180" xlink:href="src/assets/images/nodejs.png" />
 </defs>
 </svg>
