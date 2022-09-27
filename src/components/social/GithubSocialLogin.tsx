@@ -1,9 +1,9 @@
 import React from 'react';
 import { GithubLoginButton } from './SocialLogin.styles';
 
-const GITHUB_AUTH_URL = `https://github.com/login/oauth/authorize?scope=user&client_id=${
+const GITHUB_AUTH_URL = `https://github.com/login/oauth/authorize?client_id=${
   import.meta.env.VITE_GITHUB_KEY
-}&redirect_uri=${import.meta.env.VITE_GITHUB_URL}`;
+}&redirect_uri=${import.meta.env.VITE_GITHUB_URL}&scope=user`;
 
 const GithubSocialLogin = () => {
   const getAuthToken = () => {

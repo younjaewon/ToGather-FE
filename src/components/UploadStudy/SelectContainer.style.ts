@@ -1,39 +1,15 @@
-import styled, { css } from '@emotion/styled';
-import axios from 'axios';
-import FontSizes from '../../constants/FontSizes';
+import styled from '@emotion/styled';
 import Flex from '../../styles/Flex';
-import COLOR from '../../constants/colors';
 import 'react-datepicker/dist/react-datepicker.css';
-import CalendarContainer from 'react-datepicker';
 
 interface WrapMapProps {
   isOffline: boolean;
 }
 
-const UploadPageMain = styled.section`
-  max-width: 1040px;
-  display: flex;
-  flex-direction: column;
-  padding: 60px 16px;
-  width: 1024px;
-  margin: 0 auto;
-  color: #333;
-  gap: 50px;
-  position: relative;
-  top: 4rem;
-  height: 60rem;
-`;
-
-const Heading = styled.h2`
- font-size:${FontSizes.Study_Upload_Fontsize}
- font-weight:${FontSizes.Study_Upload_FontWeight}
- box-shadow: 2px 2px 2px ${COLOR.GRAY_100};
-`;
-
 const WrapSelects = styled.div`
   margin-top: 3rem;
   ${Flex({ justifyContent: 'space-around', alignItems: 'center' })}
-  min-height:30rem;
+  height:25%
 `;
 
 const OnOfflineBlock = styled.div`
@@ -45,9 +21,13 @@ const OnOfflineBlock = styled.div`
   height:100%;
 `;
 const WrapRegionSelect = styled.div`
-  ${Flex({ columnGap: '1rem' })};
+  ${Flex({ columnGap: '3rem', flexDirection: 'column' })};
   visibility: ${(props: WrapMapProps) => (props.isOffline ? 'hidden' : 'visible')};
   width: 25rem;
+`;
+
+const WrapMapInput = styled.div`
+  ${Flex({ columnGap: '3rem' })};
 `;
 
 const RegionInput = styled.input`
@@ -58,13 +38,14 @@ const RegionInput = styled.input`
   height: 38px;
   text-align: center;
   font-size: 16px;
+  :focus {
+    outline: none;
+  }
 `;
 
 const WraponOffline = styled.div`
   width: 23rem;
 `;
-
-const WrapMapInput = styled.div``;
 
 const RestSelectBlock = styled(OnOfflineBlock)`
   ${Flex({ flexDirection: 'column', alignItems: 'center' })};
@@ -74,11 +55,9 @@ const RestSelectBlock = styled(OnOfflineBlock)`
   height: 100%;
 `;
 
-const CustomContainer = styled.div``;
+const WrapTechSelect = styled(WraponOffline)``;
 
 export {
-  UploadPageMain,
-  Heading,
   WrapSelects,
   RestSelectBlock,
   WrapRegionSelect,
@@ -86,5 +65,5 @@ export {
   WrapMapInput,
   OnOfflineBlock,
   WraponOffline,
-  CustomContainer,
+  WrapTechSelect,
 };

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useLayoutEffect, useState } from 'react';
 import { modalContext } from '../../contexts/ModalContext';
 import NavMenuWidth from 'src/constants/NavMenuWidth';
 import LoginModal from '../Login/LoginModal';
@@ -18,40 +18,52 @@ import {
   SearchByText,
   UploadStudyLink,
 } from './HeaderNavigation.styles';
-import { GpsIcon } from '../@icons';
-import { useRecoilState, useRecoilValue, useResetRecoilState } from 'recoil';
-import { isScrollOverAtom } from '../../contexts/isScrollOverAtom';
+import { GpsIcon } from '../@icons/Images';
+import { useRecoilValue, useResetRecoilState } from 'recoil';
 import MyPageList from '../mypage/MyPageList';
 import { Link, useNavigate } from 'react-router-dom';
 import SearchMenu from './SearchMenu';
-import RegisterModal from '../Login/RegisterModal';
 import { useLocation } from 'react-router-dom';
 import { userAtom, userSelector } from 'src/contexts/UserAtom';
+import MapModal from '../Modal/MapModal';
+import { logout, refresh } from 'src/apis/auth';
+import Api from 'src/apis/Api';
+import AuthService from 'src/service/AuthService';
 
 const HeaderNavigation = () => {
   const openModal = useContext(modalContext)?.openModal;
   const [searchIsOpen, setSearchIsOpen] = useState(false);
   const [favoriteIsOpen, setFavoriteIsOpen] = useState(false);
-  const [gpsIsOpen, setGpsIsOpen] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
   const [myPageIsOpen, setMyPageIsOpen] = useState(false);
   const user = useRecoilValue(userSelector);
   const resetUser = useResetRecoilState(userAtom);
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  const { refreshService, logoutService } = AuthService();
+
+  const refersh = async () => {
+    if (user.nickname) {
+      const response = await refreshService();
+    }
+  };
+
+  useEffect(() => {
+    refersh();
+  }, [user.nickname]);
 
   const handleOpenModal = () => {
     openModal?.(<LoginModal />);
   };
 
   console.log(pathname);
-  const handleLogout = () => {
+  const handleKakaoOpenModal = () => {
+    openModal?.(<MapModal />);
+  };
+
+  const handleLogout = async () => {
     // logout API 호출
-    //api.post('logout').then((res) => {
-    // })
-    console.log('logout');
-    localStorage.removeItem('user');
-    localStorage.removeItem('refershToken');
+    const resonse = await logoutService();
     resetUser();
     navigate('/');
   };
@@ -78,19 +90,11 @@ const HeaderNavigation = () => {
                       <MenuBtn>공고 검색</MenuBtn>
                       <SearchMenu searchIsOpen={searchIsOpen} isHidden={[isHidden, setIsHidden]} />
                     </NavMenu>
-
                     <NavMenu>
                       <MenuBtn> 제목 검색 </MenuBtn>
                       <SearchByText />
                     </NavMenu>
-                    <GpsContainer
-                      widthProp={NavMenuWidth.gps}
-                      onMouseEnter={() => {
-                        setGpsIsOpen(true);
-                      }}
-                      onMouseLeave={() => setGpsIsOpen(false)}
-                      onClick={() => setGpsIsOpen(true)}
-                    >
+                    <GpsContainer widthProp={NavMenuWidth.gps} onClick={handleKakaoOpenModal}>
                       <GpsIcon />
                     </GpsContainer>
                   </>
