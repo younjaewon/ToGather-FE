@@ -17,6 +17,7 @@ import { getStudyListQuery } from '../../apis/studyQuery';
 import { pageNumber, isRecruiting } from '../../contexts/chachingOptionAtom';
 import StudyComponent from './StudyComponent';
 
+
 const StudyList = () => {
   const { data } = getStudyListQuery();
   const setProjectDetail = useSetRecoilState(ProjectDetailAtom);
