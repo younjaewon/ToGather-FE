@@ -1,6 +1,6 @@
+import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { NeedValueAtom } from 'src/contexts/needValue';
-import React, { useEffect, useState } from 'react';
 import S3UploadImage from './useS3UploadImage';
 
 interface Data {
