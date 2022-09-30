@@ -26,7 +26,9 @@ const Footer = ({ form }: iProps) => {
 
   const getElement = (name: string) => document.querySelector(name);
   const [options, setOptions] = useRecoilState(NeedValueAtom);
+
   const navigation = useNavigate();
+
 
 
   const handleSubmit = () => {
@@ -64,6 +66,7 @@ const Footer = ({ form }: iProps) => {
             });
             setOptions({ ...options, Location: true });
             alert(`지역을 선택해주세요!`);
+
 
             break;
           case 'personnel':

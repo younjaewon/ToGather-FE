@@ -10,6 +10,7 @@ import Api from 'src/apis/Api';
 
 /* export const getStudyDetail = () => {
 
+
   return useQuery(
     ['getDetail']
     async () => {
