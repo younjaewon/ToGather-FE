@@ -38,6 +38,7 @@ const StudyList = () => {
       },
     }
   ); */
+
   return (
     <>
       {/* {Array.isArray(data) &&
