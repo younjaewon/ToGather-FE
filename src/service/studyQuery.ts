@@ -14,9 +14,7 @@ import Api from 'src/apis/Api';
     ['getDetail']
     async () => {
       console.log('get');
-
       const { data } = await getStudy(page, recruitState, techIds, title);
-
       return data;
     },
     {
