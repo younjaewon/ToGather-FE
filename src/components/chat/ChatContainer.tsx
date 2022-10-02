@@ -24,6 +24,7 @@ interface IMessage {
 }
 
 interface IProps {
+  roomName: string;
   message: IMessage[];
   // roomId: string;
   // rommName: string;
@@ -33,6 +34,14 @@ interface IProps {
   keyPress: (e: KeyboardEvent) => void;
 }
 
+const ChatContainer = ({
+  roomName,
+  message,
+  sendMessage,
+  inputChange,
+  content,
+  keyPress,
+}: IProps) => {
 const ChatContainer = ({ message, sendMessage, inputChange, content, keyPress }: IProps) => {
   const bottomRef = useRef<HTMLDivElement>(null);
 
@@ -48,8 +57,8 @@ const ChatContainer = ({ message, sendMessage, inputChange, content, keyPress }:
   return (
     <MessageContainerBlock>
       <MessagContainereWrapper>
-        <MessageRoomName>방 이름</MessageRoomName>
         <MessageBoxBlock>
+          <MessageRoomName>{roomName}</MessageRoomName>
           <MessageBoxWrapper ref={bottomRef}>
             {message.map(({ nickname, profileImage, message, time }, idx) => (
               <MessageBox key={idx}>

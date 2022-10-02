@@ -14,7 +14,6 @@ import StudyDetail from './pages/StudyDetail';
 import MyProjectPage from './pages/MyProjectPage';
 import ChatPage from './pages/ChatPage';
 
-
 const App = () => {
   return (
     <CookiesProvider>
