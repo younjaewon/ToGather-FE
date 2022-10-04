@@ -80,6 +80,7 @@ const UserProfile = styled.div`
     height: 50px;
     border: 1px solid;
     border-radius: 50%;
+    object-fit: cover;
   }
 `;
 

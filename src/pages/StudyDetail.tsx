@@ -38,7 +38,7 @@ const StudyDetail = () => {
     if (id) {
       try {
         const response = await getProjectById(id);
-        setData(response.data);
+        setData({ ...response.data, comments: response.data.comments.reverse() });
       } catch (e) {
         console.error(e);
       }
@@ -67,8 +67,17 @@ const StudyDetail = () => {
 
   const handleOnChangeComment = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-
+    if (value === '\n') {
+      setCommentForm('');
+      return;
+    }
     setCommentForm(value);
+  };
+
+  const inputKeyPress = (e: KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      handleAddComment();
+    }
   };
 
   const handleOnChangeModComment = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -77,9 +86,7 @@ const StudyDetail = () => {
     setModCommentForm(value);
   };
 
-  const handleAddComment = async (e: React.MouseEvent<HTMLElement>) => {
-    e.preventDefault();
-
+  const handleAddComment = async () => {
     if (commentForm === '') {
       alert('댓글을 입력해주세요');
       return;
@@ -181,6 +188,7 @@ const StudyDetail = () => {
           chageComment={handleOnChangeModComment}
           submitComment={handleSubmitModComment}
           removeComment={handleRemoveComment}
+          inputKeyPress={inputKeyPress}
         />
       </Main>
       <FixedDetail userId={user.id} gettedData={data} handleEnter={handleEnterProject} />

@@ -66,7 +66,7 @@ const ChatContainer = ({
           <MessageBoxWrapper ref={bottomRef}>
             {message.map(({ nickname, profileImage, message, sendTime }, idx) => (
               <>
-                {nickname === myNickname ? (
+                {nickname !== myNickname ? (
                   <MessageBox key={idx}>
                     <UserProfile>
                       <img src={profileImage} alt="프로필" />

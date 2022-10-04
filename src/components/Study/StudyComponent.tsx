@@ -16,12 +16,13 @@ interface Iprops {
   deadline: any;
   title: any;
   author: any;
+  profileImage: string;
 }
 
-const StudyComponent = ({ id, techs, deadline, title, author }: Iprops) => {
+const StudyComponent = ({ id, profileImage, techs, deadline, title, author }: Iprops) => {
   return (
     <Study to={`/studyDetail/${id}`}>
-      {/* <StudyTechs techsList={techs} /> */}
+      <StudyTechs techsList={techs} />
       <StudyDeadline>
         마감 예정일
         <span aria-hidden="true">|</span>
@@ -29,11 +30,10 @@ const StudyComponent = ({ id, techs, deadline, title, author }: Iprops) => {
       </StudyDeadline>
       <StudyTitle>{title}</StudyTitle>
       <StudyFooter>
-        {/* <StudyAuthor>
-          <img src="/" width="36px" height="36px" />
+        <StudyAuthor>
+          <img src={profileImage} width="36px" height="36px" />
           {author}
-        </StudyAuthor> */}
-        <StudyViewer>{author}</StudyViewer>
+        </StudyAuthor>
       </StudyFooter>
     </Study>
   );

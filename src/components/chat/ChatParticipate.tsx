@@ -109,6 +109,9 @@ const ChatParticipate = () => {
   const handleSendMessage = () => {
     if (client != null) {
       if (!client.connected) return;
+
+      if (content === '') return;
+
       client.publish({
         destination: `/app/chat.${roomId}.message`,
         body: JSON.stringify({

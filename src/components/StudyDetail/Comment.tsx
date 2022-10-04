@@ -23,11 +23,12 @@ interface IProps {
   changeCommentValue: string;
   modCommnetValue: { id: string; mod: boolean };
   setComment: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  addComment: (e: React.MouseEvent<HTMLElement>) => void;
+  addComment: () => void;
   modComment: (e: React.MouseEvent<HTMLElement>, content: string) => void;
   chageComment: (e: React.ChangeEvent<HTMLInputElement>) => void;
   submitComment: (e: React.MouseEvent<HTMLElement>, content: string) => void;
   removeComment: (e: React.MouseEvent<HTMLElement>, content: string) => void;
+  inputKeyPress: (e: KeyboardEvent) => void;
 }
 const Comments = ({
   userId,
@@ -41,12 +42,13 @@ const Comments = ({
   chageComment,
   submitComment,
   removeComment,
+  inputKeyPress,
 }: IProps) => {
   return (
     <CommentBlock>
       <CommentHeader>댓글창</CommentHeader>
       <div style={{ display: 'flex' }}>
-        <CommentInput value={commentValue} onChange={setComment} />
+        <CommentInput value={commentValue} onChange={setComment} onKeyPress={inputKeyPress} />
         <button
           style={{
             width: '10%',
