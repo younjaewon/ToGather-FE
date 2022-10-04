@@ -13,12 +13,14 @@ import React from 'react';
 import { CheckInfinity } from './StudyContainer.style';
 import { useInView } from 'react-intersection-observer';
 import { getProjectAllByPage } from 'src/apis/project';
+import { isUploaded } from 'src/contexts/chachingOptionAtom';
 
 const StudyList = () => {
   const recruitState = useRecoilValue(StatusFilterAtom);
   const techIds = useRecoilValue(TechFilterSelector);
   const textFilter = useRecoilValue(TextFilterAtom);
   const locationFilter = useRecoilValue(LocationFilterAtom);
+  const uploadState = useRecoilValue(isUploaded);
 
   const fetchPostList = async (
     recruitState: string,
@@ -46,7 +48,9 @@ const StudyList = () => {
     );
     const { data } = res;
     const isLast = res.data.length === 0 ? true : false;
-    return { data, nextPage: pageParam + 1, isLast };
+    const reversed = data.reverse();
+
+    return { reversed, nextPage: pageParam + 1, isLast };
   };
 
   const { ref, inView } = useInView();
@@ -67,8 +71,14 @@ const StudyList = () => {
       },
       staleTime: 3 * 60 * 1000,
       refetchOnWindowFocus: false,
+      refetchOnMount: 'always',
     }
   );
+
+  Array.isArray(data) &&
+    data.sort((a, b) => {
+      return Number(a.deadline) - Number(b.deadline);
+    });
 
   useEffect(() => {
     if (inView) fetchNextPage();
@@ -79,7 +89,7 @@ const StudyList = () => {
       <WrapStudy className="study">
         {data?.pages.map((page, index) => (
           <React.Fragment key={index}>
-            {page.data.map((list: any) => (
+            {page.reversed.map((list: any) => (
               <StudyComponent
                 key={list.id}
                 id={list.id}
