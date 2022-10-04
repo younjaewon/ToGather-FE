@@ -63,7 +63,7 @@ const useInput = (initailValue: any) => {
     const changeProperty = target.reduce((acc: any, cur: Tech) => {
       let id = cur.value;
       let name = cur.label;
-      return [...acc, id, name];
+      return [...acc, { id, name }];
     }, []);
     return changeProperty;
   };

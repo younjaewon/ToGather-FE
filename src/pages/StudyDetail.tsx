@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 import { enterProjectById, getProjectById } from 'src/apis/project';
 import { userAtom } from 'src/contexts/UserAtom';
 import { addComments, removeComments, updateComments } from 'src/apis/comment';
+import PostButton from 'src/components/StudyDetail/PostButton';
 
 const StudyDetail = () => {
   const { id } = useParams();
@@ -167,6 +168,10 @@ const StudyDetail = () => {
     }
   };
 
+  const handlePostUpdate = () => {};
+
+  const handlePostRemove = () => {};
+
   if (Object.keys(data).length === 0) {
     return null;
   }
@@ -190,6 +195,9 @@ const StudyDetail = () => {
           removeComment={handleRemoveComment}
           inputKeyPress={inputKeyPress}
         />
+        {/* {user.id == data.member.id ? (
+          <PostButton updatePost={handlePostUpdate} removePost={handlePostRemove} />
+        ) : null} */}
       </Main>
       <FixedDetail userId={user.id} gettedData={data} handleEnter={handleEnterProject} />
       <TabletFixedDetail userId={user.id} gettedData={data} handleEnter={handleEnterProject} />

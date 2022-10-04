@@ -98,7 +98,6 @@ const StudyList = () => {
                 title={list.title}
                 profileImage={list.member.profileImage}
                 author={list.member.nickname}
-                image={list.member.profileImage}
               />
             ))}
           </React.Fragment>
