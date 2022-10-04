@@ -34,6 +34,7 @@ const StudyComponent = ({ id, profileImage, techs, deadline, title, author }: Ip
           <img src={profileImage} width="36px" height="36px" />
           {author}
         </StudyAuthor>
+        <StudyViewer>{author}</StudyViewer>
       </StudyFooter>
     </Study>
   );
