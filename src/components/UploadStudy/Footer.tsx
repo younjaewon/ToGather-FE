@@ -16,7 +16,7 @@ interface iProps {
     techStackIds: number[];
     content: string;
     title: string;
-    Location: '';
+    Location: string;
   };
 }
 
