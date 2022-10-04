@@ -15,10 +15,10 @@ const UserLoginAuth = () => {
   }, [authToken.signUpToken]);
 
   const registerModalOpen = () => {
-    // openModal?.(<RegisterModal />);
+    openModal?.(<RegisterModal />);
   };
 
-  return <div></div>;
+  return <></>;
 };
 
 export default UserLoginAuth;

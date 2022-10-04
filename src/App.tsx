@@ -22,7 +22,7 @@ const App = () => {
           <HeaderNavigation />
           <Routes>
             <Route path="/" element={<MainPage />} />
-            {/* <Route path="/mypage" element={<MyPage />} /> */}
+            <Route path="/mypage" element={<MyPage />} />
             <Route path="/myProject" element={<MyProjectPage />} />
             <Route path="/chatRoom" element={<ChatRoomPage />} />
             <Route path="/chat/:projectId/:roomId" element={<ChatPage />} />
