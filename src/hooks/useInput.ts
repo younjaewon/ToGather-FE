@@ -52,10 +52,11 @@ const useInput = (initailValue: any) => {
   };
 
   const idNameToMultiSelect = (target: Tech[]) => {
-    const changeProperty = target.reduce((acc: number[], cur: Tech) => {
+    const changeProperty = target.reduce((acc: any, cur: Tech) => {
       let id = cur.value;
-      return [...acc, id];
+      return [...acc, { id }];
     }, []);
+
     return changeProperty;
   };
 
