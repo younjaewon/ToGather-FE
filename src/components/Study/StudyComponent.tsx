@@ -7,6 +7,7 @@ import {
   StudyFooter,
   StudyTitle,
   StudyViewer,
+  AuthorSpan,
 } from './StudyList.style';
 import StudyTechs from './StudyTechs';
 
@@ -16,10 +17,10 @@ interface Iprops {
   deadline: any;
   title: any;
   author: any;
-  profileImage: string;
+  image: any;
 }
 
-const StudyComponent = ({ id, profileImage, techs, deadline, title, author }: Iprops) => {
+const StudyComponent = ({ id, techs, deadline, title, author, image }: Iprops) => {
   return (
     <Study to={`/studyDetail/${id}`}>
       <StudyTechs techsList={techs} />
@@ -31,8 +32,8 @@ const StudyComponent = ({ id, profileImage, techs, deadline, title, author }: Ip
       <StudyTitle>{title}</StudyTitle>
       <StudyFooter>
         <StudyAuthor>
-          <img src={profileImage} width="36px" height="36px" />
-          {author}
+          <img src={image} width="36px" height="36px" />
+          <AuthorSpan>{author}</AuthorSpan>
         </StudyAuthor>
         <StudyViewer>{author}</StudyViewer>
       </StudyFooter>
