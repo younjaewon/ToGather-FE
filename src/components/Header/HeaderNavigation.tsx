@@ -109,7 +109,7 @@ const HeaderNavigation = () => {
                     </GpsContainer>
                   </>
                 )}
-                <NavMenu
+                {/* <NavMenu
                   widthProp={NavMenuWidth.favorite}
                   onMouseEnter={() => {
                     setFavoriteIsOpen(true);
@@ -118,7 +118,7 @@ const HeaderNavigation = () => {
                 >
                   <MenuBtn onClick={() => setFavoriteIsOpen(true)}>즐겨찾기</MenuBtn>
                   <Favorites favoriteIsOpen={favoriteIsOpen}></Favorites>
-                </NavMenu>
+                </NavMenu> */}
                 <NavMenu>
                   <UploadStudyLink to="/uploadStudy" onClick={reset}>
                     공고 등록

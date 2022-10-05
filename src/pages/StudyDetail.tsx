@@ -52,8 +52,8 @@ const StudyDetail = () => {
       try {
         const response = await enterProjectById(id);
 
-        if (response.data.status === 200) {
-          alert('지원 되었습니다.');
+        if (response.status === 200) {
+          alert('지원 했습니다.');
         }
 
         if (response.data.status === 400) {
