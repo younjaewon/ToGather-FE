@@ -34,6 +34,7 @@ import Logo from '../@icons/Logo';
 import { UserLocationAtom } from 'src/contexts/UserLocationAtom';
 import { authAtom } from 'src/contexts/AuthAtom';
 import COLOR from 'src/constants/colors';
+import LogoImage from 'src/components/@icons/logo2_express.svg';
 
 const HeaderNavigation = () => {
   const openModal = useContext(modalContext)?.openModal;
@@ -81,12 +82,7 @@ const HeaderNavigation = () => {
         <NavigationBlock>
           <Wrapper>
             <LogoTitle to="/">
-              <img
-                src="src/components/@icons/logo2_express.svg"
-                alt=""
-                width="200px"
-                height="60px"
-              />
+              <img src={LogoImage} alt="" width="200px" height="60px" />
             </LogoTitle>
             <WrapRightNav>
               <CategoryBlock>
