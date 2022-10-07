@@ -19,6 +19,7 @@ import S3UploadImage from 'src/hooks/useS3UploadImage';
 import ProfileImage from '../profileImage/ProfileImage';
 import techTable from 'src/contexts/TechsTable';
 import UserService from 'src/service/UserService';
+import { toast } from 'react-toastify';
 
 interface tech {
   value?: number;
@@ -58,7 +59,7 @@ const UserInfoEdit = ({ user }: props) => {
     try {
       const response = await checkNickname(nickname);
 
-      alert(response.data ? '중복입니다' : '정상입니다.');
+      toast.info(response.data ? '중복입니다' : '정상입니다.');
 
       setNicknameCheck(response.data);
     } catch (e) {}
@@ -68,7 +69,7 @@ const UserInfoEdit = ({ user }: props) => {
     e.preventDefault();
 
     if (user.nickname !== form.nickname && nicknameCheck) {
-      alert('중복확인을 눌러 주세요.');
+      toast.info('중복확인을 눌러 주세요.');
       return;
     }
 
@@ -84,7 +85,7 @@ const UserInfoEdit = ({ user }: props) => {
 
       const response = await updateUserByIdService(user.id, formData);
 
-      alert('성공');
+      toast.success('회원정보 수정 성공');
       navigate('/');
     } catch (e) {
       console.error(e);

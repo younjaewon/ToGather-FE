@@ -14,6 +14,8 @@ import StudyDetail from './pages/StudyDetail';
 import MyProjectPage from './pages/MyProjectPage';
 import ChatPage from './pages/ChatPage';
 import GlobalStyle from './global-styles';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from 'react-toastify';
 
 const App = () => {
   return (
@@ -22,6 +24,7 @@ const App = () => {
         <ModalProvider>
           <HeaderNavigation />
           <GlobalStyle />
+          <ToastContainer position={toast.POSITION.TOP_RIGHT} autoClose={2000} theme={'colored'} />
           <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path="/mypage" element={<MyPage />} />
