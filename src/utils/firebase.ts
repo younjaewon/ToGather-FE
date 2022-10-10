@@ -34,10 +34,6 @@ const fetchGetToken = async () => {
   })
     .then((currentToken) => {
       if (currentToken) {
-        // setToken(currentToken);
-        Api.post(`/fcm/token`, {
-          registrationToken: currentToken,
-        });
         token = currentToken;
         console.log('currentToken: ', currentToken);
       } else {
@@ -47,19 +43,26 @@ const fetchGetToken = async () => {
     .catch((err) => {
       console.log('An error occurred while retrieving token. ', err);
     });
-
   return token;
 };
 
-export const fetchFirebaseToken = () => {
-  Notification.requestPermission()
-    .then((permission) => {
-      if (permission === 'granted') {
-        console.log('Notification permission granted.');
-        fetchGetToken();
-      }
+export const fetchFirebaseToken = async () => {
+  try {
+    const permission = await Notification.requestPermission();
+    const currentToken = await fetchGetToken();
+
+    if (permission !== 'granted') {
+      return;
+    }
+
+    Api.post(`/fcm/token`, {
+      registrationToken: currentToken,
     })
-    .catch((err) => console.log(err));
+      .then((res) => console.log(res))
+      .catch((err) => console.error(err));
+  } catch (e) {
+    console.error(e);
+  }
 };
 
 // 백그라운드 서비스워커 설정

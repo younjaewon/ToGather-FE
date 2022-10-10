@@ -16,7 +16,6 @@ Api.interceptors.response.use(
   (error) => {
     let errResStatus = null;
     const originalRequest = error.config;
-
     try {
       errResStatus = error.response.status;
     } catch (e) {
@@ -35,12 +34,10 @@ Api.interceptors.response.use(
             if (res.data.status === 401) {
               return Promise.reject(error);
             }
-
             const { accessToken, refreshToken } = res.data;
-            setCookie('refreshToken', res.data.refreshToken, {
+            setCookie('refreshToken', refreshToken, {
               path: '/',
             });
-            debugger;
             originalRequest.headers.Authoriztion = `Bearer ${accessToken}`;
             Api.defaults.headers.common['Authorization'] = `Bearer ${res.data.accessToken}`;
           })
