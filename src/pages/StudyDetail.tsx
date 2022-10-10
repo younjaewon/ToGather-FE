@@ -53,12 +53,17 @@ const StudyDetail = () => {
       try {
         const response = await enterProjectById(id);
 
-        if (response.status === 200) {
+        console.log(response);
+
+        if (response.status === 200 && response.data === '') {
           toast.success('지원 성공.');
+          return;
         }
 
         if (response.data.status === 400) {
+          console.error(response.data.errorMessage);
           toast.error(response.data.errorMessage);
+          return;
         }
       } catch (e) {
         toast.info('다시 시도해주세요.');

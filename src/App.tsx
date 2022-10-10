@@ -16,12 +16,14 @@ import ChatPage from './pages/ChatPage';
 import GlobalStyle from './global-styles';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast, ToastContainer } from 'react-toastify';
-import { fetchFirebaseToken } from './utils/firebase';
+import './utils/firebase';
+import { onMessageListener, requestFirebaseToken } from './utils/firebase';
+import { useRecoilValue } from 'recoil';
+import { userAtom } from './contexts/UserAtom';
 
 const App = () => {
-  useEffect(() => {
-    fetchFirebaseToken();
-  }, []);
+  requestFirebaseToken();
+  onMessageListener();
   return (
     <CookiesProvider>
       <BrowserRouter>

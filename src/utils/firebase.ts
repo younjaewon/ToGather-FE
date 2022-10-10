@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getMessaging, getToken } from 'firebase/messaging';
+import { getMessaging, getToken, onMessage } from 'firebase/messaging';
 import Api from 'src/apis/Api';
 
 const {
@@ -13,7 +13,7 @@ const {
   VITE_FIREBASE_VAPID_KEY,
 } = import.meta.env;
 
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: VITE_FIREBASE_API_KEY,
   authDomain: VITE_FIREBASE_AUTH_DOMAIN,
   projectId: VITE_FIREBASE_PROJECT_ID,
@@ -27,54 +27,44 @@ export const firebaseApp = initializeApp(firebaseConfig);
 
 const messaging = getMessaging(firebaseApp);
 
-const fetchGetToken = async () => {
-  let token = null;
-  await getToken(messaging, {
+const requestPermission = () => {
+  console.log('Requesting permission...');
+  Notification.requestPermission().then((permission) => {
+    if (permission === 'granted') {
+      console.log('Notification permission ghranted.');
+    } else {
+      console.log('Do not have permission!');
+    }
+  });
+};
+
+export const requestFirebaseToken = async () => {
+  return getToken(messaging, {
     vapidKey: VITE_FIREBASE_VAPID_KEY,
   })
     .then((currentToken) => {
       if (currentToken) {
-        token = currentToken;
-        console.log('currentToken: ', currentToken);
+        // Send the token to your server and update the UI if necessary
+        console.log(`firebaseToken : ${currentToken}`);
+        Api.post(`/fcm/token`, {
+          registrationToken: currentToken,
+        })
+          .then((res) => console.log(res))
+          .catch((err) => console.error(err));
       } else {
+        // Show permission request UI
         console.log('No registration token available. Request permission to generate one.');
       }
     })
     .catch((err) => {
       console.log('An error occurred while retrieving token. ', err);
     });
-  return token;
 };
 
-export const fetchFirebaseToken = async () => {
-  try {
-    const permission = await Notification.requestPermission();
-    const currentToken = await fetchGetToken();
+//포그라운드 메시지 수신
+export const onMessageListener = () =>
+  onMessage(messaging, (payload) => {
+    console.log('payload', payload);
+  });
 
-    if (permission !== 'granted') {
-      return;
-    }
-
-    Api.post(`/fcm/token`, {
-      registrationToken: currentToken,
-    })
-      .then((res) => console.log(res))
-      .catch((err) => console.error(err));
-  } catch (e) {
-    console.error(e);
-  }
-};
-
-// 백그라운드 서비스워커 설정
-// messaging.onBackgroundMessage(messaging, (payload) => {
-//   console.log('[firebase-messaging-sw.js] Received background message ', payload);
-
-//   // Customize notification here
-//   const notificationTitle = 'Background Message Title';
-//   const notificationOptions = {
-//     body: payload,
-//     icon: '/firebase-logo.png',
-//   };
-
-//   self.registration.showNotification(notificationTitle, notificationOptions);
-// });
+requestPermission();
