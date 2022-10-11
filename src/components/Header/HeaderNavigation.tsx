@@ -52,7 +52,6 @@ const HeaderNavigation = () => {
 
   const refersh = async () => {
     if (user.nickname) {
-      console.log(1);
       const response = await refreshService();
     }
   };
