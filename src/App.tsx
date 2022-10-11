@@ -25,12 +25,6 @@ const App = () => {
 
   useEffect(() => {
     if (user.nickname) {
-      toast.info(
-        <NotificationAlert
-          title={'승인 요청 알림'}
-          body={'ooo님이 oooo의 공고에 참여 신청했습니다.'}
-        />
-      );
       requestFirebaseToken();
       onMessageListener()
         .then((payload: any) => {
