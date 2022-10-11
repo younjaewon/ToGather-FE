@@ -43,14 +43,14 @@ const UserInfoEdit = ({ user }: props) => {
   const { form, changeInput, multiSelectChange, idLabelToMultiSel1ect } = useInput({
     ...user,
   });
-  const { handleFileInput, handleUpload } = S3UploadImage('profile/');
+  // const { handleFileInput, handleUpload } = S3UploadImage('profile/');
   const resetUser = useResetRecoilState(userAtom);
   const [nicknameCheck, setNicknameCheck] = useState(true);
   const navigate = useNavigate();
   const { updateUserByIdService } = UserService();
 
   const handleChangeProfileImage = (e: React.ChangeEvent<HTMLInputElement>) => {
-    handleFileInput(e);
+    // handleFileInput(e);
     changeInput(e);
   };
 
@@ -76,7 +76,7 @@ const UserInfoEdit = ({ user }: props) => {
     try {
       let imageUrl = form.profileImage;
       if (user.profileImage !== form.profileImage) {
-        imageUrl = await handleUpload();
+        // imageUrl = await handleUpload();
         imageUrl = baseImageUrl + imageUrl;
       }
 

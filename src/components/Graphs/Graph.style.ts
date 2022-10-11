@@ -15,7 +15,6 @@ const BtnLeft = styled.button`
   height: 2rem;
   position: absolute;
   left: 42%;
-  z-index: 100;
 `;
 
 const BtnRight = styled.button`
@@ -23,7 +22,6 @@ const BtnRight = styled.button`
   height: 2rem;
   position: absolute;
   right: 42%;
-  z-index: 100;
 `;
 
 export { BarGraph, BtnLeft, BtnRight };

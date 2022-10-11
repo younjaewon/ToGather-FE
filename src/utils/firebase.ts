@@ -63,8 +63,11 @@ export const requestFirebaseToken = async () => {
 
 //포그라운드 메시지 수신
 export const onMessageListener = () =>
-  onMessage(messaging, (payload) => {
-    console.log('payload', payload);
+  new Promise((resolve) => {
+    onMessage(messaging, (payload) => {
+      console.log('payload', payload);
+      resolve(payload);
+    });
   });
 
 requestPermission();

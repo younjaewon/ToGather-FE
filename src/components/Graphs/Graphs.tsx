@@ -128,8 +128,8 @@ const Graph = () => {
   return (
     <>
       <BarGraph data={stasisticsData} width={300} height={200} options={options}></BarGraph>
-      {page !== 0 && <BtnLeft onClick={handleNext}>다음 주</BtnLeft>}
       <BtnRight onClick={handlePrev}>이전 주</BtnRight>
+      {page !== 0 && <BtnLeft onClick={handleNext}>다음 주</BtnLeft>}
     </>
   );
 };

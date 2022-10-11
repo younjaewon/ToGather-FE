@@ -13,23 +13,43 @@ import UploadStudy from './pages/UploadStudy';
 import StudyDetail from './pages/StudyDetail';
 import MyProjectPage from './pages/MyProjectPage';
 import ChatPage from './pages/ChatPage';
-import GlobalStyle from './global-styles';
-import 'react-toastify/dist/ReactToastify.css';
 import { toast, ToastContainer } from 'react-toastify';
 import './utils/firebase';
 import { onMessageListener, requestFirebaseToken } from './utils/firebase';
 import { useRecoilValue } from 'recoil';
 import { userAtom } from './contexts/UserAtom';
+import NotificationAlert from './components/Notification/NotificationAlert';
 
 const App = () => {
-  requestFirebaseToken();
-  onMessageListener();
+  const user = useRecoilValue(userAtom);
+
+  useEffect(() => {
+    if (user.nickname) {
+      toast.info(
+        <NotificationAlert
+          title={'승인 요청 알림'}
+          body={'ooo님이 oooo의 공고에 참여 신청했습니다.'}
+        />
+      );
+      requestFirebaseToken();
+      onMessageListener()
+        .then((payload: any) => {
+          toast.info(
+            <NotificationAlert
+              body={payload.notification.body}
+              title={payload.notification.title}
+            />
+          );
+          console.log(payload);
+        })
+        .catch((err) => console.log('failed: ', err));
+    }
+  }, []);
   return (
     <CookiesProvider>
       <BrowserRouter>
         <ModalProvider>
           <HeaderNavigation />
-          <GlobalStyle />
           <ToastContainer position={toast.POSITION.TOP_RIGHT} autoClose={2000} theme={'colored'} />
           <Routes>
             <Route path="/" element={<MainPage />} />
