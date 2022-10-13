@@ -35,7 +35,6 @@ const StudyComponent = ({ id, techs, deadline, title, author, image }: Iprops) =
           <img src={image} width="36px" height="36px" />
           <AuthorSpan>{author}</AuthorSpan>
         </StudyAuthor>
-        <StudyViewer>{author}</StudyViewer>
       </StudyFooter>
     </Study>
   );
