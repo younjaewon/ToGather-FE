@@ -4,10 +4,8 @@ import { isUploaded } from '../../contexts/chachingOptionAtom';
 import { UserLocationAtom } from '../../contexts/UserLocationAtom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { NeedValueAtom } from 'src/contexts/needValue';
-import { createStudyQuery } from 'src/service/studyQuery';
 import { useNavigate } from 'react-router-dom';
-import { toast, ToastContainer } from 'react-toastify';
-import { useCallback, useMemo } from 'react';
+import { toast } from 'react-toastify';
 import { createStudy, updateStudy } from 'src/apis/study';
 
 const Footer = ({ form, isEdit, id }: any) => {
@@ -15,14 +13,19 @@ const Footer = ({ form, isEdit, id }: any) => {
   const location = useRecoilValue(UserLocationAtom);
   const [options, setOptions] = useRecoilState(NeedValueAtom);
   const navigation = useNavigate();
+  console.log({
+    ...form,
+    latitude: location.La,
+    longitude: location.Ma,
+    address: location.regionName,
+  });
 
   const resultForm = form.offline
     ? {
         ...form,
-        Location:
-          location.La !== 0
-            ? { latitude: location.La, longitude: location.Ma, regionName: location.regionName }
-            : '',
+        latitude: location.La,
+        longitude: location.Ma,
+        address: location.regionName,
       }
     : {
         ...form,
@@ -31,6 +34,7 @@ const Footer = ({ form, isEdit, id }: any) => {
   const getElement = (name: string) => document.querySelector(name);
 
   const handleSubmit = () => {
+    console.log(resultForm);
     let success = false;
 
     for (let entry of Object.entries(resultForm)) {
@@ -46,7 +50,7 @@ const Footer = ({ form, isEdit, id }: any) => {
         setOptions({ ...options, [entry[0]]: true });
 
         switch (entry[0]) {
-          case 'Location':
+          case 'address':
             window.scrollTo({
               top: (regionElement as HTMLElement).offsetTop - 20,
               behavior: 'smooth',
@@ -95,6 +99,8 @@ const Footer = ({ form, isEdit, id }: any) => {
     }
     success = true;
     if (success) {
+      console.log(resultForm);
+
       id ? updateStudy(resultForm, id) : createStudy(resultForm);
       setIsUploaded(true);
       toast.success('공고가 정상 등록되었습니다.');
