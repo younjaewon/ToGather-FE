@@ -16,11 +16,7 @@ const SearchBlock = styled.div`
 
 const WrapSearch = styled.div`
   width: 21rem;
-  position: absolute;
   ${Flex({ alignItems: 'center', justifyContent: 'space-between' })};
-  top: 1rem;
-  left: 40%;
-  transfrom: translateX(-40%);
   flex-shrink: 0;
 `;
 
