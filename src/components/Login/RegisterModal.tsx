@@ -4,12 +4,10 @@ import { CustomButton, SubmitButton } from 'src/styles/Button';
 import { InputLabel, InputText } from 'src/styles/Input';
 import { InputBoxBlock, Title, Wrapper, ButtonBlock } from './RegisterModal.styles';
 import useInput from 'src/hooks/useInput';
-import S3UploadImage from 'src/hooks/useS3UploadImage';
 import AuthService from 'src/service/AuthService';
 import ProfileImage from '../profileImage/ProfileImage';
 import { checkNickname } from 'src/apis/user';
 import techTable from 'src/contexts/TechsTable';
-import axios from 'axios';
 import Api from 'src/apis/Api';
 import { useRecoilState } from 'recoil';
 import { imageAtom } from 'src/contexts/ImageAtom';
@@ -69,8 +67,6 @@ const RegisterModal = () => {
           'Content-Type': 'multipart/form-data',
         },
       });
-
-      debugger;
 
       if (file.data.status === 400) {
         throw new Error(file.data.errorMessage);
