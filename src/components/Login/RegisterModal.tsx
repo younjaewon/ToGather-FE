@@ -66,19 +66,23 @@ const RegisterModal = () => {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
-      });
+      })
+        .then((res) => {
+          if (res.data.status === 400) {
+            throw new Error(res.data.errorMessage);
+          }
 
-      if (file.data.status === 400) {
-        throw new Error(file.data.errorMessage);
-      }
+          formData.techStackDtos = idNameToMultiSelect(form.techStackDtos);
+          formData.profileImage = res.data;
 
-      formData.techStackDtos = idNameToMultiSelect(form.techStackDtos);
-      formData.profileImage = file.data;
-
-      const response = await registerService(formData).then((res) => {
-        toast.success('회원가입 되었습니다.');
-        window.dispatchEvent(new KeyboardEvent('keyup', { key: 'Escape' }));
-      });
+          const response = registerService(formData).then((res) => {
+            toast.success('회원가입 되었습니다.');
+            window.dispatchEvent(new KeyboardEvent('keyup', { key: 'Escape' }));
+          });
+        })
+        .catch((err) => {
+          toast.error(err);
+        });
     } catch (err: any) {
       toast.error(err.message);
     }
