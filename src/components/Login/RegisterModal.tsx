@@ -12,11 +12,12 @@ import Api from 'src/apis/Api';
 import { useRecoilState } from 'recoil';
 import { imageAtom } from 'src/contexts/ImageAtom';
 import { toast } from 'react-toastify';
+import defaultImage from 'src/assets/images/images/default.png';
 
 const RegisterModal = () => {
   const [imageFile, setImageFile] = useRecoilState(imageAtom);
   const { form, changeInput, multiSelectChange, idNameToMultiSelect } = useInput({
-    profileImage: '',
+    profileImage: defaultImage,
     nickname: '',
     techStackDtos: [],
   });
